@@ -1,43 +1,64 @@
 const spiders = [
   {
-    name: "Caribena versicolor",
-    description: "A colorful arboreal tarantula.",
-    price: "€85",
-    emoji: "🕷️"
-  },
-  {
     name: "Brachypelma hamorii",
-    description: "A striking New World terrestrial tarantula.",
-    price: "€95",
-    emoji: "🕷️"
+    commonName: "Mexican Red Knee",
+    type: "Terrestrial",
+    region: "Mexico",
+    description: "A famous Mexican tarantula known for its dark body and striking orange-red knees.",
+    experience: "Beginner-friendly"
   },
+
   {
     name: "Tliltocatl albopilosus",
-    description: "A hardy and distinctive curly-haired tarantula.",
-    price: "€65",
-    emoji: "🕷️"
+    commonName: "Curly Hair Tarantula",
+    type: "Terrestrial",
+    region: "Central America",
+    description: "A distinctive tarantula with dense, curly hairs and a generally robust appearance.",
+    experience: "Beginner-friendly"
   },
+
   {
     name: "Grammostola pulchripes",
-    description: "Known for its beautiful golden markings.",
-    price: "€90",
-    emoji: "🕷️"
+    commonName: "Chaco Golden Knee",
+    type: "Terrestrial",
+    region: "South America",
+    description: "Recognized for its golden leg markings and attractive dark body.",
+    experience: "Beginner-friendly"
   },
+
   {
-    name: "Poecilotheria regalis",
-    description: "A striking arboreal species with dramatic markings.",
-    price: "€110",
-    emoji: "🕷️"
+    name: "Caribena versicolor",
+    commonName: "Martinique Pinktoe",
+    type: "Arboreal",
+    region: "Martinique",
+    description: "A colorful arboreal tarantula that develops striking coloration as it matures.",
+    experience: "Intermediate"
   },
+
   {
     name: "Chromatopelma cyaneopubescens",
-    description: "A colorful species with blue, orange and green tones.",
-    price: "€100",
-    emoji: "🕷️"
+    commonName: "Green Bottle Blue",
+    type: "Terrestrial",
+    region: "Venezuela",
+    description: "A highly colorful tarantula famous for its blue legs, orange abdomen and metallic appearance.",
+    experience: "Intermediate"
+  },
+
+  {
+    name: "Theraphosa blondi",
+    commonName: "Goliath Bird-Eating Tarantula",
+    type: "Terrestrial",
+    region: "South America",
+    description: "One of the largest and most impressive tarantulas, known for its enormous size.",
+    experience: "Advanced"
   }
 ];
 
+
 const grid = document.getElementById("spider-grid");
+
+
+/* CREATE SPECIES CARDS */
 
 spiders.forEach(spider => {
 
@@ -46,25 +67,47 @@ spiders.forEach(spider => {
   card.className = "spider-card";
 
   card.innerHTML = `
+    
     <div class="spider-image">
-      ${spider.emoji}
+      🕷️
     </div>
 
     <div class="spider-info">
-      <h3>${spider.name}</h3>
 
-      <p>${spider.description}</p>
+      <p class="eyebrow">
+        ${spider.type}
+      </p>
 
-      <p class="price">${spider.price}</p>
+      <h3>
+        ${spider.commonName}
+      </h3>
+
+      <p>
+        <em>${spider.name}</em>
+      </p>
+
+      <p>
+        ${spider.description}
+      </p>
+
+      <p>
+        <strong>Region:</strong> ${spider.region}
+      </p>
+
+      <p class="price">
+        ${spider.experience}
+      </p>
+
     </div>
   `;
 
   grid.appendChild(card);
+
 });
 
 
 /* =========================
-   AI ASSISTANT DEMO
+   BIRD SPIDER ASSISTANT
 ========================= */
 
 const chatButton = document.getElementById("chat-button");
@@ -73,6 +116,7 @@ const closeChat = document.getElementById("close-chat");
 
 const chatInput = document.getElementById("chat-input");
 const sendMessage = document.getElementById("send-message");
+
 const messages = document.getElementById("chat-messages");
 
 
@@ -107,37 +151,91 @@ function assistantReply(question) {
 
   const q = question.toLowerCase();
 
-  if (q.includes("price") || q.includes("cost")) {
 
-    return "Our demo collection currently ranges from €65 to €110. Ask me about a specific species for more information.";
+  if (
+    q.includes("bird spider") ||
+    q.includes("tarantula")
+  ) {
 
+    return "Bird spider is a common term associated with tarantulas. Tarantulas belong primarily to the family Theraphosidae and include many different species.";
   }
 
-  if (q.includes("available")) {
 
-    return "The spiders shown in the collection are currently listed as available in this demo.";
+  if (
+    q.includes("beginner") ||
+    q.includes("start")
+  ) {
 
+    return "Some terrestrial tarantulas are commonly considered more suitable for beginners, but the choice should always depend on the individual species and the keeper's experience.";
   }
 
-  if (q.includes("beginner")) {
 
-    return "For beginners, we would normally recommend researching species carefully and considering temperament, adult size, care requirements and experience level before choosing.";
+  if (
+    q.includes("goliath") ||
+    q.includes("theraphosa")
+  ) {
 
+    return "The Goliath bird-eating tarantula (Theraphosa blondi) is one of the largest tarantulas. Despite its name, birds are not its normal food.";
   }
 
-  if (q.includes("species")) {
 
-    return "We currently have six demo species listed. You can browse the collection above.";
+  if (
+    q.includes("red knee") ||
+    q.includes("hamorii")
+  ) {
 
+    return "Brachypelma hamorii, commonly called the Mexican Red Knee, is a terrestrial Mexican tarantula famous for its orange-red leg markings.";
   }
 
-  if (q.includes("hello") || q.includes("hi")) {
 
-    return "Hello! 🕷️ What would you like to know about our collection?";
+  if (
+    q.includes("curly") ||
+    q.includes("albopilosus")
+  ) {
 
+    return "Tliltocatl albopilosus is commonly known as the Curly Hair Tarantula and is recognized for its dense, curly hairs.";
   }
 
-  return "I can help with questions about our demo collection, prices and general information. Try asking: “What species do you have?”";
+
+  if (
+    q.includes("arboreal") ||
+    q.includes("tree")
+  ) {
+
+    return "Arboreal tarantulas are adapted to living above the ground and generally require appropriately designed vertical enclosures with climbing opportunities.";
+  }
+
+
+  if (
+    q.includes("molting") ||
+    q.includes("molt") ||
+    q.includes("shedding")
+  ) {
+
+    return "Molting is how tarantulas grow by shedding their old exoskeleton. A tarantula should not be disturbed during the molting process.";
+  }
+
+
+  if (
+    q.includes("food") ||
+    q.includes("eat") ||
+    q.includes("feeding")
+  ) {
+
+    return "Tarantulas are predators that commonly eat invertebrate prey. Feeding requirements vary with species and life stage.";
+  }
+
+
+  if (
+    q.includes("hello") ||
+    q.includes("hi")
+  ) {
+
+    return "Hello! 🕷️ I'm the Bird Spider Assistant. Ask me about species, habitats, tarantula types or basic care.";
+  }
+
+
+  return "I can help with general information about bird spiders and tarantulas. Try asking about a species, beginner species, arboreal tarantulas, molting or feeding.";
 }
 
 
@@ -151,25 +249,32 @@ function sendChatMessage() {
 
   chatInput.value = "";
 
+
   setTimeout(() => {
 
     const answer = assistantReply(question);
 
     addMessage(answer, "bot");
 
-  }, 500);
+  }, 400);
 }
 
 
-sendMessage.addEventListener("click", sendChatMessage);
+sendMessage.addEventListener(
+  "click",
+  sendChatMessage
+);
 
 
-chatInput.addEventListener("keydown", event => {
+chatInput.addEventListener(
+  "keydown",
+  event => {
 
-  if (event.key === "Enter") {
+    if (event.key === "Enter") {
 
-    sendChatMessage();
+      sendChatMessage();
+
+    }
 
   }
-
-});
+);
