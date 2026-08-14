@@ -1,1 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arachnid House | Exotic Spiders</title>
+  <link rel="stylesheet" href="style.css">
+</head>
 
+<body>
+
+  <header>
+    <nav class="navbar">
+      <a href="#" class="logo">🕷️ Arachnid House</a>
+
+      <div class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#collection">Collection</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+
+    <section id="home" class="hero">
+      <div class="hero-content">
+        <p class="eyebrow">EXOTIC ARACHNIDS</p>
+
+        <h1>Discover your next<br><span>eight-legged companion.</span></h1>
+
+        <p class="hero-text">
+          Explore our carefully selected collection of captive-bred tarantulas
+          and discover the fascinating world of arachnids.
+        </p>
+
+        <div class="hero-buttons">
+          <a href="#collection" class="button primary">Explore Collection</a>
+          <a href="#contact" class="button secondary">Contact Us</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="collection" class="collection">
+      <div class="section-heading">
+        <p class="eyebrow">OUR COLLECTION</p>
+        <h2>Available Spiders</h2>
+        <p>Browse our featured selection.</p>
+      </div>
+
+      <div id="spider-grid" class="spider-grid">
+        <!-- Spider cards are added by JavaScript -->
+      </div>
+    </section>
+
+    <section id="about" class="about">
+      <div>
+        <p class="eyebrow">ABOUT US</p>
+        <h2>Passion for the fascinating world of arachnids.</h2>
+      </div>
+
+      <p>
+        We are passionate about responsible keeping and sharing knowledge
+        about these incredible animals. Every spider in our collection is
+        presented with detailed information to help customers make informed
+        decisions.
+      </p>
+    </section>
+
+    <section id="contact" class="contact">
+      <p class="eyebrow">GET IN TOUCH</p>
+      <h2>Interested in a spider?</h2>
+
+      <p>
+        Have a question about availability or care? Send us a message.
+      </p>
+
+      <a href="mailto:example@email.com" class="button primary">
+        Contact Us
+      </a>
+    </section>
+
+  </main>
+
+  <button id="chat-button" aria-label="Open assistant">
+    🕷️
+  </button>
+
+  <div id="chat-window" class="chat-window">
+
+    <div class="chat-header">
+      <strong>Spider Assistant</strong>
+      <button id="close-chat">×</button>
+    </div>
+
+    <div id="chat-messages" class="chat-messages">
+      <div class="bot-message">
+        Hi! 👋 I'm the Spider Assistant. Ask me about our collection.
+      </div>
+    </div>
+
+    <div class="chat-input">
+      <input
+        id="chat-input"
+        type="text"
+        placeholder="Ask a question..."
+      >
+
+      <button id="send-message">Send</button>
+    </div>
+
+  </div>
+
+  <footer>
+    <p>© 2026 Arachnid House. Demo website.</p>
+  </footer>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
