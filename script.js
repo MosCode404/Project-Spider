@@ -4,8 +4,8 @@ const spiders = [
     commonName: "Mexican Red Knee",
     type: "Terrestrial",
     region: "Mexico",
-    description: "A famous Mexican tarantula known for its dark body and striking orange-red knees.",
-    experience: "Beginner-friendly"
+    description:
+      "A well-known tarantula recognized for its dark body and orange-red markings on the legs."
   },
 
   {
@@ -13,8 +13,8 @@ const spiders = [
     commonName: "Curly Hair Tarantula",
     type: "Terrestrial",
     region: "Central America",
-    description: "A distinctive tarantula with dense, curly hairs and a generally robust appearance.",
-    experience: "Beginner-friendly"
+    description:
+      "A distinctive tarantula known for its dense, curly hairs."
   },
 
   {
@@ -22,8 +22,8 @@ const spiders = [
     commonName: "Chaco Golden Knee",
     type: "Terrestrial",
     region: "South America",
-    description: "Recognized for its golden leg markings and attractive dark body.",
-    experience: "Beginner-friendly"
+    description:
+      "A striking tarantula recognized for its golden leg markings."
   },
 
   {
@@ -31,8 +31,8 @@ const spiders = [
     commonName: "Martinique Pinktoe",
     type: "Arboreal",
     region: "Martinique",
-    description: "A colorful arboreal tarantula that develops striking coloration as it matures.",
-    experience: "Intermediate"
+    description:
+      "A colorful arboreal tarantula that develops beautiful coloration as it matures."
   },
 
   {
@@ -40,8 +40,8 @@ const spiders = [
     commonName: "Green Bottle Blue",
     type: "Terrestrial",
     region: "Venezuela",
-    description: "A highly colorful tarantula famous for its blue legs, orange abdomen and metallic appearance.",
-    experience: "Intermediate"
+    description:
+      "A spectacular species known for its blue legs, orange abdomen and metallic appearance."
   },
 
   {
@@ -49,25 +49,28 @@ const spiders = [
     commonName: "Goliath Bird-Eating Tarantula",
     type: "Terrestrial",
     region: "South America",
-    description: "One of the largest and most impressive tarantulas, known for its enormous size.",
-    experience: "Advanced"
+    description:
+      "One of the world's largest tarantulas, famous for its impressive size."
   }
 ];
 
 
-const grid = document.getElementById("spider-grid");
+/* =========================
+   SPECIES CARDS
+========================= */
+
+const spiderGrid = document.getElementById("spider-grid");
 
 
-/* CREATE SPECIES CARDS */
+spiders.forEach(function(spider) {
 
-spiders.forEach(spider => {
-
-  const card = document.createElement("div");
+  const card = document.createElement("article");
 
   card.className = "spider-card";
 
+
   card.innerHTML = `
-    
+
     <div class="spider-image">
       🕷️
     </div>
@@ -91,190 +94,29 @@ spiders.forEach(spider => {
       </p>
 
       <p>
-        <strong>Region:</strong> ${spider.region}
-      </p>
-
-      <p class="price">
-        ${spider.experience}
+        <strong>Region:</strong>
+        ${spider.region}
       </p>
 
     </div>
+
   `;
 
-  grid.appendChild(card);
+
+  spiderGrid.appendChild(card);
 
 });
 
 
 /* =========================
-   BIRD SPIDER ASSISTANT
+   CHAT ELEMENTS
 ========================= */
 
-const chatButton = document.getElementById("chat-button");
-const chatWindow = document.getElementById("chat-window");
-const closeChat = document.getElementById("close-chat");
+const chatButton =
+  document.getElementById("chat-button");
 
-const chatInput = document.getElementById("chat-input");
-const sendMessage = document.getElementById("send-message");
+const chatWindow =
+  document.getElementById("chat-window");
 
-const messages = document.getElementById("chat-messages");
-
-
-chatButton.addEventListener("click", () => {
-  chatWindow.style.display = "flex";
-});
-
-
-closeChat.addEventListener("click", () => {
-  chatWindow.style.display = "none";
-});
-
-
-function addMessage(text, type) {
-
-  const message = document.createElement("div");
-
-  message.className =
-    type === "user"
-      ? "user-message"
-      : "bot-message";
-
-  message.textContent = text;
-
-  messages.appendChild(message);
-
-  messages.scrollTop = messages.scrollHeight;
-}
-
-
-function assistantReply(question) {
-
-  const q = question.toLowerCase();
-
-
-  if (
-    q.includes("bird spider") ||
-    q.includes("tarantula")
-  ) {
-
-    return "Bird spider is a common term associated with tarantulas. Tarantulas belong primarily to the family Theraphosidae and include many different species.";
-  }
-
-
-  if (
-    q.includes("beginner") ||
-    q.includes("start")
-  ) {
-
-    return "Some terrestrial tarantulas are commonly considered more suitable for beginners, but the choice should always depend on the individual species and the keeper's experience.";
-  }
-
-
-  if (
-    q.includes("goliath") ||
-    q.includes("theraphosa")
-  ) {
-
-    return "The Goliath bird-eating tarantula (Theraphosa blondi) is one of the largest tarantulas. Despite its name, birds are not its normal food.";
-  }
-
-
-  if (
-    q.includes("red knee") ||
-    q.includes("hamorii")
-  ) {
-
-    return "Brachypelma hamorii, commonly called the Mexican Red Knee, is a terrestrial Mexican tarantula famous for its orange-red leg markings.";
-  }
-
-
-  if (
-    q.includes("curly") ||
-    q.includes("albopilosus")
-  ) {
-
-    return "Tliltocatl albopilosus is commonly known as the Curly Hair Tarantula and is recognized for its dense, curly hairs.";
-  }
-
-
-  if (
-    q.includes("arboreal") ||
-    q.includes("tree")
-  ) {
-
-    return "Arboreal tarantulas are adapted to living above the ground and generally require appropriately designed vertical enclosures with climbing opportunities.";
-  }
-
-
-  if (
-    q.includes("molting") ||
-    q.includes("molt") ||
-    q.includes("shedding")
-  ) {
-
-    return "Molting is how tarantulas grow by shedding their old exoskeleton. A tarantula should not be disturbed during the molting process.";
-  }
-
-
-  if (
-    q.includes("food") ||
-    q.includes("eat") ||
-    q.includes("feeding")
-  ) {
-
-    return "Tarantulas are predators that commonly eat invertebrate prey. Feeding requirements vary with species and life stage.";
-  }
-
-
-  if (
-    q.includes("hello") ||
-    q.includes("hi")
-  ) {
-
-    return "Hello! 🕷️ I'm the Bird Spider Assistant. Ask me about species, habitats, tarantula types or basic care.";
-  }
-
-
-  return "I can help with general information about bird spiders and tarantulas. Try asking about a species, beginner species, arboreal tarantulas, molting or feeding.";
-}
-
-
-function sendChatMessage() {
-
-  const question = chatInput.value.trim();
-
-  if (!question) return;
-
-  addMessage(question, "user");
-
-  chatInput.value = "";
-
-
-  setTimeout(() => {
-
-    const answer = assistantReply(question);
-
-    addMessage(answer, "bot");
-
-  }, 400);
-}
-
-
-sendMessage.addEventListener(
-  "click",
-  sendChatMessage
-);
-
-
-chatInput.addEventListener(
-  "keydown",
-  event => {
-
-    if (event.key === "Enter") {
-
-      sendChatMessage();
-
-    }
-
-  }
-);
+const closeChat =
+ 
