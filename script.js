@@ -1,310 +1,844 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-  // =========================
-  // BIRD SPIDER SPECIES
-  // =========================
 
-  const birdSpiders = [
-    {
-      commonName: "Mexican Red Knee",
-      scientificName: "Brachypelma hamorii",
-      type: "Terrestrial",
-      region: "Mexico",
-      description: "A famous bird spider known for its distinctive orange-red leg markings."
-    },
-    {
-      commonName: "Curly Hair Bird Spider",
-      scientificName: "Tliltocatl albopilosus",
-      type: "Terrestrial",
-      region: "Central America",
-      description: "A bird spider recognized for its dense, curly hairs."
-    },
-    {
-      commonName: "Chaco Golden Knee",
-      scientificName: "Grammostola pulchripes",
-      type: "Terrestrial",
-      region: "South America",
-      description: "A striking bird spider with golden markings on its legs."
-    },
-    {
-      commonName: "Martinique Pinktoe",
-      scientificName: "Caribena versicolor",
-      type: "Arboreal",
-      region: "Martinique",
-      description: "A colorful arboreal bird spider with striking coloration."
-    },
-    {
-      commonName: "Green Bottle Blue",
-      scientificName: "Chromatopelma cyaneopubescens",
-      type: "Terrestrial",
-      region: "Venezuela",
-      description: "A spectacular bird spider with blue legs and an orange abdomen."
-    },
-    {
-      commonName: "Goliath Bird-Eating Spider",
-      scientificName: "Theraphosa blondi",
-      type: "Terrestrial",
-      region: "South America",
-      description: "One of the largest bird spiders in the world."
-    }
-  ];
+/* =========================================
+   BIRD SPIDER INVENTORY
+
+   EDIT THIS SECTION WHEN ADDING PRODUCTS
+========================================= */
+
+const birdSpiders = [
+
+  {
+    id: 1,
+
+    name: "Mexican Red Knee",
+
+    scientific: "Brachypelma hamorii",
+
+    type: "terrestrial",
+
+    region: "Mexico",
+
+    stage: "Juvenile",
+
+    sex: "Unsexed",
+
+    price: 75,
+
+    available: true,
+
+    description:
+      "A highly recognizable bird spider known for its dark body and distinctive orange-red markings."
+  },
 
 
-  // =========================
-  // SPECIES CARDS
-  // =========================
+  {
+    id: 2,
 
-  const spiderGrid = document.getElementById("spider-grid");
+    name: "Curly Hair Bird Spider",
 
-  if (spiderGrid) {
+    scientific: "Tliltocatl albopilosus",
 
-    birdSpiders.forEach(function (spider) {
+    type: "terrestrial",
 
-      const card = document.createElement("article");
+    region: "Central America",
 
-      card.className = "spider-card";
+    stage: "Juvenile",
 
-      card.innerHTML = `
-        <div class="spider-image">
-          🕷️
-        </div>
+    sex: "Unsexed",
 
-        <div class="spider-info">
+    price: 55,
 
-          <p class="eyebrow">
-            ${spider.type} BIRD SPIDER
-          </p>
+    available: true,
 
-          <h3>${spider.commonName}</h3>
+    description:
+      "A distinctive bird spider recognized by its dense, curly hairs and generally robust appearance."
+  },
 
-          <p>
-            <em>${spider.scientificName}</em>
-          </p>
 
-          <p>${spider.description}</p>
+  {
+    id: 3,
 
-          <p>
-            <strong>Native region:</strong>
-            ${spider.region}
-          </p>
+    name: "Chaco Golden Knee",
 
-        </div>
-      `;
+    scientific: "Grammostola pulchripes",
 
-      spiderGrid.appendChild(card);
+    type: "terrestrial",
+
+    region: "South America",
+
+    stage: "Juvenile",
+
+    sex: "Unsexed",
+
+    price: 65,
+
+    available: true,
+
+    description:
+      "A beautiful terrestrial bird spider with striking golden markings on the legs."
+  },
+
+
+  {
+    id: 4,
+
+    name: "Martinique Pinktoe",
+
+    scientific: "Caribena versicolor",
+
+    type: "arboreal",
+
+    region: "Martinique",
+
+    stage: "Juvenile",
+
+    sex: "Unsexed",
+
+    price: 90,
+
+    available: true,
+
+    description:
+      "A colorful arboreal bird spider known for its dramatic coloration."
+  },
+
+
+  {
+    id: 5,
+
+    name: "Green Bottle Blue",
+
+    scientific: "Chromatopelma cyaneopubescens",
+
+    type: "terrestrial",
+
+    region: "Venezuela",
+
+    stage: "Juvenile",
+
+    sex: "Unsexed",
+
+    price: 85,
+
+    available: true,
+
+    description:
+      "A spectacular bird spider with vivid blue legs and a contrasting orange abdomen."
+  },
+
+
+  {
+    id: 6,
+
+    name: "Goliath Bird-Eating Spider",
+
+    scientific: "Theraphosa blondi",
+
+    type: "terrestrial",
+
+    region: "South America",
+
+    stage: "Juvenile",
+
+    sex: "Unsexed",
+
+    price: 150,
+
+    available: false,
+
+    description:
+      "One of the largest known bird spiders, famous for its impressive size."
+  }
+
+];
+
+
+
+/* =========================================
+   PRODUCT GRID
+========================================= */
+
+const grid =
+  document.getElementById("spider-grid");
+
+const search =
+  document.getElementById("species-search");
+
+const filter =
+  document.getElementById("species-filter");
+
+const noResults =
+  document.getElementById("no-results");
+
+
+function renderProducts() {
+
+  if (!grid) return;
+
+  const searchTerm =
+    search.value.toLowerCase().trim();
+
+  const selectedType =
+    filter.value;
+
+
+  const filtered =
+    birdSpiders.filter(function (spider) {
+
+      const matchesSearch =
+        spider.name
+          .toLowerCase()
+          .includes(searchTerm)
+        ||
+        spider.scientific
+          .toLowerCase()
+          .includes(searchTerm);
+
+
+      const matchesType =
+        selectedType === "all"
+        ||
+        spider.type === selectedType;
+
+
+      return matchesSearch && matchesType;
 
     });
 
-  }
+
+  grid.innerHTML = "";
 
 
-  // =========================
-  // CHAT
-  // =========================
+  if (filtered.length === 0) {
 
-  const chatButton = document.getElementById("chat-button");
-  const chatWindow = document.getElementById("chat-window");
-  const closeChat = document.getElementById("close-chat");
-  const chatInput = document.getElementById("chat-input");
-  const sendMessage = document.getElementById("send-message");
-  const chatMessages = document.getElementById("chat-messages");
+    noResults.style.display = "block";
 
-
-  // Make sure the chat elements exist
-
-  if (!chatButton || !chatWindow) {
-    console.log("Bird Spider Assistant elements not found.");
     return;
+
   }
 
 
-  // OPEN ASSISTANT
+  noResults.style.display = "none";
 
-  chatButton.addEventListener("click", function () {
 
-    chatWindow.style.display = "flex";
+  filtered.forEach(function (spider) {
 
-    if (chatInput) {
-      chatInput.focus();
-    }
+    const card =
+      document.createElement("article");
+
+    card.className = "product-card";
+
+
+    card.innerHTML = `
+
+      <div class="product-image">
+
+        <span class="availability">
+
+          ${
+            spider.available
+              ? "Available"
+              : "Sold / Unavailable"
+          }
+
+        </span>
+
+        🕷️
+
+      </div>
+
+
+      <div class="product-info">
+
+        <span class="product-type">
+          ${spider.type} bird spider
+        </span>
+
+
+        <h3>
+          ${spider.name}
+        </h3>
+
+
+        <p class="scientific">
+          ${spider.scientific}
+        </p>
+
+
+        <div class="product-meta">
+
+          <span>
+            ${spider.stage}
+          </span>
+
+          <span>
+            ${spider.sex}
+          </span>
+
+          <span>
+            ${spider.region}
+          </span>
+
+        </div>
+
+
+        <div class="product-bottom">
+
+          <span class="price">
+            €${spider.price}
+          </span>
+
+
+          <button
+            class="view-product"
+            data-id="${spider.id}"
+          >
+
+            View details →
+
+          </button>
+
+        </div>
+
+      </div>
+
+    `;
+
+
+    grid.appendChild(card);
 
   });
 
+}
 
-  // CLOSE ASSISTANT
 
-  if (closeChat) {
 
-    closeChat.addEventListener("click", function () {
+/* SEARCH */
 
-      chatWindow.style.display = "none";
+if (search) {
 
-    });
+  search.addEventListener(
+    "input",
+    renderProducts
+  );
+
+}
+
+
+/* FILTER */
+
+if (filter) {
+
+  filter.addEventListener(
+    "change",
+    renderProducts
+  );
+
+}
+
+
+renderProducts();
+
+
+
+/* =========================================
+   PRODUCT MODAL
+========================================= */
+
+const modal =
+  document.getElementById("product-modal");
+
+const modalBody =
+  document.getElementById("modal-body");
+
+const closeModal =
+  document.getElementById("close-modal");
+
+const modalOverlay =
+  document.querySelector(".modal-overlay");
+
+
+function openProduct(id) {
+
+  const spider =
+    birdSpiders.find(
+      item => item.id === id
+    );
+
+
+  if (!spider) return;
+
+
+  modalBody.innerHTML = `
+
+    <div class="modal-image">
+      🕷️
+    </div>
+
+
+    <span class="product-type">
+      ${spider.type} bird spider
+    </span>
+
+
+    <h2>
+      ${spider.name}
+    </h2>
+
+
+    <p class="modal-scientific">
+      ${spider.scientific}
+    </p>
+
+
+    <p class="modal-description">
+      ${spider.description}
+    </p>
+
+
+    <div class="modal-details">
+
+      <div class="modal-detail">
+
+        <small>
+          Type
+        </small>
+
+        <strong>
+          ${spider.type}
+        </strong>
+
+      </div>
+
+
+      <div class="modal-detail">
+
+        <small>
+          Native region
+        </small>
+
+        <strong>
+          ${spider.region}
+        </strong>
+
+      </div>
+
+
+      <div class="modal-detail">
+
+        <small>
+          Life stage
+        </small>
+
+        <strong>
+          ${spider.stage}
+        </strong>
+
+      </div>
+
+
+      <div class="modal-detail">
+
+        <small>
+          Sex
+        </small>
+
+        <strong>
+          ${spider.sex}
+        </strong>
+
+      </div>
+
+    </div>
+
+
+    <div class="product-bottom">
+
+      <span class="price">
+        €${spider.price}
+      </span>
+
+
+      ${
+        spider.available
+
+        ?
+
+        `
+        <a
+          class="btn btn-primary"
+          href="mailto:your-email@example.com?subject=Inquiry about ${encodeURIComponent(spider.name)}"
+        >
+          Make an inquiry
+        </a>
+        `
+
+        :
+
+        `
+        <span
+          style="color:#777"
+        >
+          Currently unavailable
+        </span>
+        `
+      }
+
+    </div>
+
+  `;
+
+
+  modal.classList.add("active");
+
+  modal.setAttribute(
+    "aria-hidden",
+    "false"
+  );
+
+}
+
+
+document.addEventListener(
+  "click",
+  function (event) {
+
+    const button =
+      event.target.closest(".view-product");
+
+
+    if (!button) return;
+
+
+    openProduct(
+      Number(button.dataset.id)
+    );
+
+  }
+);
+
+
+function closeProduct() {
+
+  modal.classList.remove("active");
+
+  modal.setAttribute(
+    "aria-hidden",
+    "true"
+  );
+
+}
+
+
+closeModal.addEventListener(
+  "click",
+  closeProduct
+);
+
+
+modalOverlay.addEventListener(
+  "click",
+  closeProduct
+);
+
+
+
+/* =========================================
+   BIRD SPIDER ASSISTANT
+========================================= */
+
+const chatButton =
+  document.getElementById("chat-button");
+
+const chatWindow =
+  document.getElementById("chat-window");
+
+const closeChat =
+  document.getElementById("close-chat");
+
+const chatInput =
+  document.getElementById("chat-input");
+
+const sendMessage =
+  document.getElementById("send-message");
+
+const chatMessages =
+  document.getElementById("chat-messages");
+
+
+chatButton.addEventListener(
+  "click",
+  function () {
+
+    chatWindow.style.display = "flex";
+
+    chatInput.focus();
+
+  }
+);
+
+
+closeChat.addEventListener(
+  "click",
+  function () {
+
+    chatWindow.style.display = "none";
+
+  }
+);
+
+
+function addMessage(text, type) {
+
+  const message =
+    document.createElement("div");
+
+
+  message.className =
+    type === "user"
+      ? "user-message"
+      : "bot-message";
+
+
+  message.textContent = text;
+
+
+  chatMessages.appendChild(message);
+
+
+  chatMessages.scrollTop =
+    chatMessages.scrollHeight;
+
+}
+
+
+function assistantAnswer(question) {
+
+  const q =
+    question.toLowerCase();
+
+
+  if (
+    q.includes("hello") ||
+    q.includes("hi") ||
+    q.includes("hey")
+  ) {
+
+    return (
+      "Welcome to Bird Spider World! 🕷️ " +
+      "I can help you learn about bird spiders, " +
+      "species and keeping."
+    );
 
   }
 
 
-  // ADD MESSAGE
+  if (
+    q.includes("available") ||
+    q.includes("for sale") ||
+    q.includes("buy")
+  ) {
 
-  function addMessage(text, type) {
-
-    if (!chatMessages) return;
-
-    const message = document.createElement("div");
-
-    message.className =
-      type === "user"
-        ? "user-message"
-        : "bot-message";
-
-    message.textContent = text;
-
-    chatMessages.appendChild(message);
-
-    chatMessages.scrollTop =
-      chatMessages.scrollHeight;
-  }
+    const available =
+      birdSpiders
+        .filter(s => s.available)
+        .map(s => s.name)
+        .join(", ");
 
 
-  // ASSISTANT ANSWERS
-
-  function getAnswer(question) {
-
-    const q = question.toLowerCase();
-
-
-    if (
-      q.includes("hello") ||
-      q.includes("hi") ||
-      q.includes("hey")
-    ) {
-      return "Hello! 🕷️ I'm the Bird Spider Assistant. What would you like to know?";
-    }
-
-
-    if (
-      q.includes("what is a bird spider") ||
-      q.includes("what are bird spiders")
-    ) {
-      return "Bird spider is a common name associated with tarantulas, especially large spiders of the family Theraphosidae.";
-    }
-
-
-    if (
-      q.includes("species") ||
-      q.includes("types")
-    ) {
-      return "Some well-known bird spiders include the Mexican Red Knee, Curly Hair Bird Spider, Chaco Golden Knee, Martinique Pinktoe, Green Bottle Blue and Goliath Bird-Eating Spider.";
-    }
-
-
-    if (
-      q.includes("habitat") ||
-      q.includes("where do they live")
-    ) {
-      return "Bird spiders occur mainly in warm regions around the world. Depending on the species, they may live on the ground, in burrows or in trees and vegetation.";
-    }
-
-
-    if (
-      q.includes("molt") ||
-      q.includes("molting")
-    ) {
-      return "Molting is the process by which a bird spider sheds its old exoskeleton as it grows. A spider should generally be left undisturbed during a molt.";
-    }
-
-
-    if (
-      q.includes("food") ||
-      q.includes("eat") ||
-      q.includes("feeding")
-    ) {
-      return "Bird spiders are predators and commonly eat suitable invertebrate prey. Feeding frequency varies according to species, age and conditions.";
-    }
-
-
-    if (
-      q.includes("care") ||
-      q.includes("keeping")
-    ) {
-      return "Bird spider care is species-specific. Important considerations include enclosure design, ventilation, substrate, hydration, temperature and feeding.";
-    }
-
-
-    if (
-      q.includes("red knee") ||
-      q.includes("hamorii")
-    ) {
-      return "Brachypelma hamorii, the Mexican Red Knee, is a terrestrial bird spider native to Mexico and known for its orange-red markings.";
-    }
-
-
-    if (
-      q.includes("goliath") ||
-      q.includes("theraphosa")
-    ) {
-      return "Theraphosa blondi is commonly called the Goliath bird-eating spider and is one of the largest known bird spiders.";
-    }
-
-
-    return "I'm dedicated specifically to bird spiders 🕷️. Try asking about species, habitat, behavior, molting, feeding or care.";
+    return (
+      "Currently listed as available: " +
+      available +
+      ". You can browse the Available Bird Spiders section " +
+      "and open a listing to make an inquiry."
+    );
 
   }
 
 
-  // SEND MESSAGE
+  if (
+    q.includes("price") ||
+    q.includes("cost")
+  ) {
 
-  function sendChatMessage() {
+    return (
+      "Prices are displayed on each available bird spider " +
+      "listing. Select 'View details' for the current " +
+      "price and inquiry option."
+    );
 
-    if (!chatInput) return;
+  }
 
-    const question = chatInput.value.trim();
 
-    if (question === "") return;
+  if (
+    q.includes("red knee") ||
+    q.includes("hamorii")
+  ) {
 
-    addMessage(question, "user");
+    return (
+      "Brachypelma hamorii, the Mexican Red Knee, " +
+      "is a terrestrial bird spider native to Mexico. " +
+      "It's known for its distinctive orange-red markings."
+    );
 
-    chatInput.value = "";
+  }
 
-    setTimeout(function () {
+
+  if (
+    q.includes("goliath") ||
+    q.includes("theraphosa")
+  ) {
+
+    return (
+      "Theraphosa blondi, commonly called the Goliath " +
+      "bird-eating spider, is one of the largest known " +
+      "bird spiders."
+    );
+
+  }
+
+
+  if (
+    q.includes("molt") ||
+    q.includes("molting")
+  ) {
+
+    return (
+      "Molting is how bird spiders replace their old " +
+      "exoskeleton as they grow. A spider should generally " +
+      "be left undisturbed during this vulnerable period."
+    );
+
+  }
+
+
+  if (
+    q.includes("care") ||
+    q.includes("keeping") ||
+    q.includes("enclosure")
+  ) {
+
+    return (
+      "Bird spider care depends on the species. Important " +
+      "considerations include enclosure design, ventilation, " +
+      "substrate, hydration, temperature and feeding."
+    );
+
+  }
+
+
+  if (
+    q.includes("habitat") ||
+    q.includes("where")
+  ) {
+
+    return (
+      "Bird spiders occur across many warm regions. " +
+      "Depending on the species, they can be terrestrial, " +
+      "burrowing or arboreal."
+    );
+
+  }
+
+
+  if (
+    q.includes("food") ||
+    q.includes("eat") ||
+    q.includes("feeding")
+  ) {
+
+    return (
+      "Bird spiders are predators that commonly consume " +
+      "appropriate invertebrate prey. Feeding frequency " +
+      "depends on species, age and conditions."
+    );
+
+  }
+
+
+  return (
+    "I'm the Bird Spider Assistant 🕷️. " +
+    "Ask me about available species, prices, habitats, " +
+    "care, feeding, molting or bird spiders in general."
+  );
+
+}
+
+
+function sendChatMessage() {
+
+  const question =
+    chatInput.value.trim();
+
+
+  if (!question) return;
+
+
+  addMessage(
+    question,
+    "user"
+  );
+
+
+  chatInput.value = "";
+
+
+  setTimeout(
+    function () {
 
       addMessage(
-        getAnswer(question),
+        assistantAnswer(question),
         "bot"
       );
 
-    }, 300);
+    },
+    300
+  );
+
+}
+
+
+sendMessage.addEventListener(
+  "click",
+  sendChatMessage
+);
+
+
+chatInput.addEventListener(
+  "keydown",
+  function (event) {
+
+    if (event.key === "Enter") {
+
+      sendChatMessage();
+
+    }
 
   }
+);
 
 
-  // SEND BUTTON
 
-  if (sendMessage) {
+/* =========================================
+   MOBILE MENU
+========================================= */
 
-    sendMessage.addEventListener(
-      "click",
-      sendChatMessage
-    );
+const mobileMenu =
+  document.getElementById("mobile-menu");
 
-  }
+const navLinks =
+  document.querySelector(".nav-links");
 
 
-  // ENTER KEY
+mobileMenu.addEventListener(
+  "click",
+  function () {
 
-  if (chatInput) {
-
-    chatInput.addEventListener(
-      "keydown",
-      function (event) {
-
-        if (event.key === "Enter") {
-          sendChatMessage();
-        }
-
-      }
-    );
+    navLinks.classList.toggle("mobile-open");
 
   }
+);
 
 });
