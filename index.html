@@ -2,493 +2,710 @@
 <html lang="en">
 
 <head>
+
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
   <meta
     name="description"
-    content="Bird Spider World — explore bird spiders, their species, habitats, anatomy, behavior, molting and care."
+    content="Bird Spider World — premium bird spiders, species information and responsible keeping."
   >
 
-  <title>Bird Spider World</title>
+  <title>Bird Spider World | Bird Spiders & Tarantulas</title>
 
   <link rel="stylesheet" href="style.css">
+
 </head>
+
 
 <body>
 
-  <!-- NAVIGATION -->
 
-  <header>
+<!-- ================================
+     NAVIGATION
+================================ -->
 
-    <nav class="navbar">
+<header class="site-header">
 
-      <a href="#home" class="logo">
-        🕷️ Bird Spider World
+  <nav class="navbar">
+
+    <a href="#home" class="brand">
+
+      <span class="brand-icon">🕷</span>
+
+      <span>
+        <strong>Bird Spider</strong>
+        <small>WORLD</small>
+      </span>
+
+    </a>
+
+
+    <div class="nav-links">
+
+      <a href="#shop">Available</a>
+
+      <a href="#about">About</a>
+
+      <a href="#care">Care</a>
+
+      <a href="#contact">Contact</a>
+
+    </div>
+
+
+    <button
+      class="mobile-menu"
+      id="mobile-menu"
+      aria-label="Open menu"
+    >
+      ☰
+    </button>
+
+  </nav>
+
+</header>
+
+
+
+<main>
+
+
+<!-- ================================
+     HERO
+================================ -->
+
+<section id="home" class="hero">
+
+  <div class="hero-background"></div>
+
+  <div class="hero-content">
+
+    <p class="eyebrow">
+      BIRD SPIDERS • SPECIES • KEEPING
+    </p>
+
+    <h1>
+      Enter the world of
+      <span>bird spiders.</span>
+    </h1>
+
+    <p class="hero-description">
+
+      Discover remarkable tarantula species,
+      explore their natural world and find
+      carefully selected bird spiders for
+      responsible keepers.
+
+    </p>
+
+
+    <div class="hero-actions">
+
+      <a href="#shop" class="btn btn-primary">
+        Browse Available Spiders
       </a>
 
-      <div class="nav-links">
+      <a href="#about" class="btn btn-outline">
+        Explore the World
+      </a>
 
-        <a href="#home">Home</a>
+    </div>
 
-        <a href="#species">Species</a>
 
-        <a href="#habitat">Habitat</a>
+    <div class="hero-stats">
 
-        <a href="#behavior">Behavior</a>
-
-        <a href="#care">Care</a>
-
+      <div>
+        <strong>6+</strong>
+        <span>Featured species</span>
       </div>
 
-    </nav>
-
-  </header>
-
-
-  <main>
-
-
-    <!-- HERO -->
-
-    <section id="home" class="hero">
-
-      <div class="hero-content">
-
-        <p class="eyebrow">
-          THE WORLD OF BIRD SPIDERS
-        </p>
-
-        <h1>
-          Discover the fascinating
-          <span>bird spider.</span>
-        </h1>
-
-        <p class="hero-text">
-
-          Explore the species, habitats, anatomy, behavior
-          and extraordinary lives of these remarkable arachnids.
-
-        </p>
-
-        <div class="hero-buttons">
-
-          <a href="#species" class="button primary">
-            Explore Bird Spiders
-          </a>
-
-          <a href="#about" class="button secondary">
-            Learn More
-          </a>
-
-        </div>
-
+      <div>
+        <strong>100%</strong>
+        <span>Bird spider focused</span>
       </div>
 
-    </section>
+      <div>
+        <strong>2026</strong>
+        <span>Bird Spider World</span>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
 
 
 
-    <!-- INTRODUCTION -->
+<!-- ================================
+     SHOP
+================================ -->
 
-    <section id="about" class="intro">
+<section id="shop" class="shop section">
+
+  <div class="section-heading">
+
+    <div>
 
       <p class="eyebrow">
-        ABOUT BIRD SPIDERS
+        COLLECTION
       </p>
 
       <h2>
-        What is a bird spider?
+        Available bird spiders
       </h2>
 
-      <p>
+    </div>
 
-        Bird spider is a common name associated with tarantulas.
-        Tarantulas are large, hairy spiders belonging primarily
-        to the family Theraphosidae.
+    <p>
+      Explore our current selection.
+      Availability and prices can change.
+    </p>
 
-      </p>
-
-      <p>
-
-        They occur across tropical and subtropical regions of
-        the world and display remarkable diversity in size,
-        coloration, habitat and behavior.
-
-      </p>
-
-    </section>
+  </div>
 
 
+  <div class="shop-controls">
 
-    <!-- SPECIES -->
+    <div class="search-box">
 
-    <section id="species" class="species-section">
+      <span>⌕</span>
 
-      <div class="section-heading">
-
-        <p class="eyebrow">
-          BIRD SPIDER SPECIES
-        </p>
-
-        <h2>
-          Explore the species
-        </h2>
-
-        <p>
-          Discover some of the most fascinating bird spiders.
-        </p>
-
-      </div>
-
-
-      <div
-        id="spider-grid"
-        class="spider-grid"
+      <input
+        id="species-search"
+        type="search"
+        placeholder="Search species..."
       >
 
-        <!-- Species are added by JavaScript -->
+    </div>
 
-      </div>
 
-    </section>
+    <select id="species-filter">
 
+      <option value="all">
+        All species
+      </option>
 
+      <option value="terrestrial">
+        Terrestrial
+      </option>
 
-    <!-- HABITAT -->
+      <option value="arboreal">
+        Arboreal
+      </option>
 
-    <section id="habitat" class="information-section">
+    </select>
 
-      <div>
-
-        <p class="eyebrow">
-          HABITAT
-        </p>
-
-        <h2>
-          Where bird spiders live
-        </h2>
-
-      </div>
-
-
-      <div class="information-text">
-
-        <p>
-
-          Bird spiders can be found in a wide range of
-          environments, including tropical forests,
-          grasslands, savannas and other warm regions.
-
-        </p>
-
-        <p>
-
-          Some species spend much of their lives on the
-          ground, while others are adapted to living
-          in trees and vegetation.
-
-        </p>
-
-        <p>
-
-          Their natural environment strongly influences
-          their behavior and physical adaptations.
-
-        </p>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- ANATOMY -->
-
-    <section id="anatomy" class="information-section reverse">
-
-      <div>
-
-        <p class="eyebrow">
-          ANATOMY
-        </p>
-
-        <h2>
-          Built for survival
-        </h2>
-
-      </div>
-
-
-      <div class="information-text">
-
-        <p>
-
-          Bird spiders have eight legs, two main body
-          sections, sensory structures and specialized
-          appendages used for feeding and interacting
-          with their environment.
-
-        </p>
-
-        <p>
-
-          Their hairs can provide sensory information,
-          while some New World species possess urticating
-          hairs that can be used defensively.
-
-        </p>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- BEHAVIOR -->
-
-    <section id="behavior" class="information-section">
-
-      <div>
-
-        <p class="eyebrow">
-          BEHAVIOR
-        </p>
-
-        <h2>
-          Understanding bird spider behavior
-        </h2>
-
-      </div>
-
-
-      <div class="information-text">
-
-        <p>
-
-          Bird spiders are generally solitary animals.
-          Their behavior can vary considerably between
-          species and individual animals.
-
-        </p>
-
-        <p>
-
-          Defensive displays, retreating, burrowing,
-          web-building and changes in activity can all
-          provide clues about their condition and environment.
-
-        </p>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- MOLTING -->
-
-    <section id="molting" class="information-section reverse">
-
-      <div>
-
-        <p class="eyebrow">
-          LIFE CYCLE
-        </p>
-
-        <h2>
-          The remarkable process of molting
-        </h2>
-
-      </div>
-
-
-      <div class="information-text">
-
-        <p>
-
-          Bird spiders grow by periodically shedding
-          their old exoskeleton in a process called molting.
-
-        </p>
-
-        <p>
-
-          During and around a molt, a spider can become
-          particularly vulnerable. It should generally be
-          left undisturbed while molting.
-
-        </p>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- CARE -->
-
-    <section id="care" class="care-section">
-
-      <div>
-
-        <p class="eyebrow">
-          RESPONSIBLE KEEPING
-        </p>
-
-        <h2>
-          Caring for a bird spider
-        </h2>
-
-      </div>
-
-
-      <div class="information-text">
-
-        <p>
-
-          Keeping a bird spider requires research and
-          preparation. Housing should reflect the needs
-          of the individual species.
-
-        </p>
-
-        <p>
-
-          Important considerations include enclosure
-          design, ventilation, substrate, hydration,
-          temperature, feeding and security.
-
-        </p>
-
-        <p>
-
-          Care requirements differ between species,
-          so species-specific information should always
-          be consulted.
-
-        </p>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- CONTACT -->
-
-    <section id="contact" class="contact">
-
-      <p class="eyebrow">
-        BIRD SPIDER WORLD
-      </p>
-
-      <h2>
-        Curious about bird spiders?
-      </h2>
-
-      <p>
-
-        Explore the species and learn more about these
-        extraordinary arachnids.
-
-      </p>
-
-    </section>
-
-  </main>
-
-
-
-  <!-- BIRD SPIDER ASSISTANT -->
-
-  <button
-    id="chat-button"
-    aria-label="Open Bird Spider Assistant"
-  >
-    🕷️
-  </button>
-
+  </div>
 
 
   <div
-    id="chat-window"
-    class="chat-window"
+    id="spider-grid"
+    class="product-grid"
   >
 
-    <div class="chat-header">
+    <!-- Products generated by JavaScript -->
 
-      <strong>
-        Bird Spider Assistant
-      </strong>
-
-      <button
-        id="close-chat"
-        aria-label="Close assistant"
-      >
-        ×
-      </button>
-
-    </div>
+  </div>
 
 
-    <div
-      id="chat-messages"
-      class="chat-messages"
-    >
+  <div
+    id="no-results"
+    class="no-results"
+  >
 
-      <div class="bot-message">
+    <span>🕷️</span>
 
-        Hello! 🕷️
+    <h3>No bird spiders found</h3>
 
-        I'm the Bird Spider Assistant.
+    <p>
+      Try another species or remove the filter.
+    </p>
 
-        Ask me about bird spider species,
-        habitats, behavior, anatomy, molting
-        or care.
+  </div>
 
+</section>
+
+
+
+<!-- ================================
+     ABOUT
+================================ -->
+
+<section id="about" class="about section">
+
+  <div class="about-content">
+
+    <p class="eyebrow">
+      ABOUT BIRD SPIDERS
+    </p>
+
+    <h2>
+      More than a spider.
+      <span>A fascinating world.</span>
+    </h2>
+
+    <p>
+
+      Bird spiders, commonly associated with
+      tarantulas, are among the most fascinating
+      arachnids on Earth.
+
+    </p>
+
+    <p>
+
+      From colorful arboreal species to powerful
+      terrestrial burrowers, their diversity is
+      extraordinary.
+
+    </p>
+
+    <p>
+
+      Bird Spider World combines species information
+      with responsible keeping and a carefully
+      presented selection of available animals.
+
+    </p>
+
+  </div>
+
+
+  <div class="about-features">
+
+    <div class="feature">
+
+      <span>01</span>
+
+      <div>
+        <h3>Species</h3>
+        <p>
+          Explore different bird spider species
+          and their natural characteristics.
+        </p>
       </div>
 
     </div>
 
 
-    <div class="chat-input">
+    <div class="feature">
 
-      <input
-        id="chat-input"
-        type="text"
-        placeholder="Ask about bird spiders..."
-        autocomplete="off"
-      >
+      <span>02</span>
 
-      <button id="send-message">
-        Send
-      </button>
+      <div>
+        <h3>Knowledge</h3>
+        <p>
+          Understand habitat, behavior,
+          anatomy and molting.
+        </p>
+      </div>
+
+    </div>
+
+
+    <div class="feature">
+
+      <span>03</span>
+
+      <div>
+        <h3>Responsible keeping</h3>
+        <p>
+          Learn about the needs of your
+          chosen bird spider before acquiring one.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- ================================
+     KNOWLEDGE
+================================ -->
+
+<section class="knowledge section">
+
+  <div class="section-heading">
+
+    <div>
+
+      <p class="eyebrow">
+        BIRD SPIDER KNOWLEDGE
+      </p>
+
+      <h2>
+        Understand your spider
+      </h2>
 
     </div>
 
   </div>
 
 
+  <div class="knowledge-grid">
 
-  <!-- FOOTER -->
 
-  <footer>
+    <article class="knowledge-card">
+
+      <span class="knowledge-number">01</span>
+
+      <h3>Habitat</h3>
+
+      <p>
+
+        Bird spiders occupy diverse warm
+        environments. Some are terrestrial,
+        while others spend much of their lives
+        above ground.
+
+      </p>
+
+    </article>
+
+
+    <article class="knowledge-card">
+
+      <span class="knowledge-number">02</span>
+
+      <h3>Behavior</h3>
+
+      <p>
+
+        Individual behavior varies considerably.
+        Retreating, burrowing, web-building and
+        defensive displays can all occur.
+
+      </p>
+
+    </article>
+
+
+    <article class="knowledge-card">
+
+      <span class="knowledge-number">03</span>
+
+      <h3>Molting</h3>
+
+      <p>
+
+        Bird spiders grow by shedding their
+        exoskeleton. The period around a molt
+        is particularly vulnerable.
+
+      </p>
+
+    </article>
+
+
+    <article class="knowledge-card">
+
+      <span class="knowledge-number">04</span>
+
+      <h3>Anatomy</h3>
+
+      <p>
+
+        Eight legs, specialized mouthparts,
+        sensory hairs and powerful adaptations
+        make these animals remarkable predators.
+
+      </p>
+
+    </article>
+
+
+  </div>
+
+</section>
+
+
+
+<!-- ================================
+     CARE
+================================ -->
+
+<section id="care" class="care section">
+
+  <div class="care-header">
+
+    <p class="eyebrow">
+      RESPONSIBLE KEEPING
+    </p>
+
+    <h2>
+      Before you bring one home.
+    </h2>
+
+  </div>
+
+
+  <div class="care-content">
+
+    <div class="care-item">
+
+      <strong>01</strong>
+
+      <h3>Research the species</h3>
+
+      <p>
+        Different bird spiders have different
+        environmental and behavioral requirements.
+      </p>
+
+    </div>
+
+
+    <div class="care-item">
+
+      <strong>02</strong>
+
+      <h3>Prepare the enclosure</h3>
+
+      <p>
+        Housing, ventilation, substrate,
+        security and environmental conditions
+        should be prepared beforehand.
+      </p>
+
+    </div>
+
+
+    <div class="care-item">
+
+      <strong>03</strong>
+
+      <h3>Understand feeding</h3>
+
+      <p>
+        Bird spiders are predators and their
+        feeding requirements vary by species,
+        age and condition.
+      </p>
+
+    </div>
+
+
+    <div class="care-item">
+
+      <strong>04</strong>
+
+      <h3>Respect the animal</h3>
+
+      <p>
+        Bird spiders are fascinating animals,
+        but they should be observed and handled
+        responsibly.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- ================================
+     CONTACT
+================================ -->
+
+<section id="contact" class="contact section">
+
+  <div>
+
+    <p class="eyebrow">
+      GET IN TOUCH
+    </p>
+
+    <h2>
+      Interested in a bird spider?
+    </h2>
 
     <p>
-      © 2026 Bird Spider World
+
+      Have a question about an available species?
+      Send us an inquiry and we'll get back to you.
+
     </p>
+
+
+    <a
+      href="mailto:your-email@example.com"
+      class="btn btn-primary"
+    >
+      Send an Inquiry
+    </a>
+
+  </div>
+
+</section>
+
+
+</main>
+
+
+
+<!-- ================================
+     PRODUCT MODAL
+================================ -->
+
+<div
+  id="product-modal"
+  class="modal"
+  aria-hidden="true"
+>
+
+  <div class="modal-overlay"></div>
+
+
+  <div class="modal-content">
+
+    <button
+      id="close-modal"
+      class="modal-close"
+      aria-label="Close"
+    >
+      ×
+    </button>
+
+
+    <div
+      id="modal-body"
+      class="modal-body"
+    >
+
+      <!-- Product details inserted here -->
+
+    </div>
+
+  </div>
+
+</div>
+
+
+
+<!-- ================================
+     BIRD SPIDER AI
+================================ -->
+
+<button
+  id="chat-button"
+  class="chat-button"
+  aria-label="Open Bird Spider Assistant"
+>
+  🕷
+</button>
+
+
+<div
+  id="chat-window"
+  class="chat-window"
+>
+
+  <div class="chat-header">
+
+    <div>
+
+      <strong>
+        Bird Spider Assistant
+      </strong>
+
+      <small>
+        Species & keeping information
+      </small>
+
+    </div>
+
+
+    <button id="close-chat">
+      ×
+    </button>
+
+  </div>
+
+
+  <div
+    id="chat-messages"
+    class="chat-messages"
+  >
+
+    <div class="bot-message">
+
+      Welcome to Bird Spider World. 🕷️
+
+      Ask me about species, habitats,
+      behavior, molting or keeping.
+
+    </div>
+
+  </div>
+
+
+  <div class="chat-input">
+
+    <input
+      id="chat-input"
+      type="text"
+      placeholder="Ask about bird spiders..."
+      autocomplete="off"
+    >
+
+    <button id="send-message">
+      Send
+    </button>
+
+  </div>
+
+</div>
+
+
+
+<!-- ================================
+     FOOTER
+================================ -->
+
+<footer>
+
+  <div class="footer-inner">
+
+    <div class="brand">
+
+      <span class="brand-icon">🕷</span>
+
+      <span>
+        <strong>Bird Spider</strong>
+        <small>WORLD</small>
+      </span>
+
+    </div>
+
 
     <p>
       Dedicated to the fascinating world of bird spiders.
     </p>
 
-  </footer>
+
+    <span>
+      © 2026 Bird Spider World
+    </span>
+
+  </div>
+
+</footer>
 
 
-
-  <script src="script.js"></script>
+<script src="script.js"></script>
 
 </body>
 
-</html>
+  </html>
