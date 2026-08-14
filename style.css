@@ -1,1 +1,285 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #0b0b0b;
+  color: #f5f5f5;
+  line-height: 1.6;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Navigation */
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(11, 11, 11, 0.95);
+  border-bottom: 1px solid #242424;
+}
+
+.navbar {
+  max-width: 1100px;
+  margin: auto;
+  padding: 18px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links a {
+  color: #aaa;
+  font-size: 14px;
+}
+
+.nav-links a:hover {
+  color: white;
+}
+
+/* Hero */
+
+.hero {
+  min-height: 85vh;
+  display: flex;
+  align-items: center;
+  padding: 60px 20px;
+  background:
+    radial-gradient(circle at 80% 30%, #402020 0%, transparent 35%),
+    #0b0b0b;
+}
+
+.hero-content {
+  max-width: 1100px;
+  width: 100%;
+  margin: auto;
+}
+
+.eyebrow {
+  color: #d88b6a;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 3px;
+  margin-bottom: 15px;
+}
+
+h1 {
+  font-size: clamp(42px, 8vw, 76px);
+  line-height: 1.05;
+  max-width: 850px;
+}
+
+h1 span {
+  color: #d88b6a;
+}
+
+.hero-text {
+  max-width: 600px;
+  color: #aaa;
+  margin: 25px 0;
+  font-size: 17px;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.button {
+  display: inline-block;
+  padding: 13px 22px;
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+.primary {
+  background: #d88b6a;
+  color: #111;
+}
+
+.secondary {
+  border: 1px solid #555;
+}
+
+/* Collection */
+
+.collection {
+  max-width: 1100px;
+  margin: auto;
+  padding: 90px 20px;
+}
+
+.section-heading {
+  margin-bottom: 40px;
+}
+
+.section-heading h2,
+.about h2,
+.contact h2 {
+  font-size: 38px;
+  margin-bottom: 10px;
+}
+
+.section-heading p:last-child,
+.contact p {
+  color: #999;
+}
+
+.spider-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+.spider-card {
+  background: #151515;
+  border: 1px solid #292929;
+  border-radius: 14px;
+  overflow: hidden;
+  transition: transform 0.2s;
+}
+
+.spider-card:hover {
+  transform: translateY(-5px);
+}
+
+.spider-image {
+  height: 220px;
+  background: #242424;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 70px;
+}
+
+.spider-info {
+  padding: 20px;
+}
+
+.spider-info h3 {
+  margin-bottom: 5px;
+}
+
+.spider-info p {
+  color: #999;
+  font-size: 14px;
+}
+
+.price {
+  color: #d88b6a !important;
+  font-size: 18px !important;
+  font-weight: bold;
+  margin-top: 12px;
+}
+
+/* About */
+
+.about {
+  max-width: 1100px;
+  margin: auto;
+  padding: 90px 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  border-top: 1px solid #222;
+}
+
+.about > p {
+  color: #aaa;
+  font-size: 17px;
+}
+
+/* Contact */
+
+.contact {
+  text-align: center;
+  padding: 100px 20px;
+  background: #151515;
+}
+
+.contact p {
+  max-width: 550px;
+  margin: 10px auto 25px;
+}
+
+/* Chat */
+
+#chat-button {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  width: 58px;
+  height: 58px;
+  border: none;
+  border-radius: 50%;
+  background: #d88b6a;
+  font-size: 25px;
+  cursor: pointer;
+  z-index: 200;
+}
+
+.chat-window {
+  position: fixed;
+  right: 20px;
+  bottom: 90px;
+  width: min(360px, calc(100% - 40px));
+  height: 450px;
+  background: #111;
+  border: 1px solid #333;
+  border-radius: 14px;
+  overflow: hidden;
+  display: none;
+  flex-direction: column;
+  z-index: 200;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+.chat-header {
+  padding: 15px;
+  background: #1d1d1d;
+  display: flex;
+  justify-content: space-between;
+}
+
+.chat-header button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 22px;
+}
+
+.chat-messages {
+  flex: 1;
+  padding: 15px;
+  overflow-y: auto;
+}
+
+.bot-message,
+.user-message {
+  padding: 10px 12px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  max-width: 85%;
+  font-size: 14
